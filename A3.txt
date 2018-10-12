@@ -1,0 +1,78 @@
+1.1
+** create: /one.txt **
+** flush /one.txt **
+** write: /one.txt **
+** flush /one.txt **
+** release /one.txt **
+
+1.2
+** open: /one.txt **
+** create: /two.txt **
+** read: /one.txt **
+** write: /two.txt **
+** flush /two.txt **
+** release /two.txt **
+** flush /one.txt **
+** release /one.txt **
+
+1.3
+** open: /two.txt **
+** read: /two.txt **
+** flush /two.txt **
+** release /two.txt **
+
+1.4
+** create: /three.txt **
+** flush /three.txt **
+** open: /one.txt **
+** read: /one.txt **
+** write: /three.txt **
+** flush /one.txt **
+** release /one.txt **
+** open: /two.txt **
+** read: /two.txt **
+** write: /three.txt **
+** flush /two.txt **
+** release /two.txt **
+** flush /three.txt **
+** release /three.txt **
+
+1.5
+** create: /.three.txt.swp **
+** write: /.three.txt.swp **
+** flush /.three.txt.swp **
+** release /.three.txt.swp **
+** open: /three.txt **
+** read: /three.txt **
+** flush /three.txt **
+** release /three.txt **
+** open: /three.txt **
+** flush /three.txt **
+** release /three.txt **
+
+After adding and deleting some text
+** create: /.three.txt.swp **
+** write: /.three.txt.swp **
+** flush /.three.txt.swp **
+** release /.three.txt.swp **
+
+After saving
+** open: /three.txt **
+** truncate: /three.txt **
+** write: /three.txt **
+** flush /three.txt **
+** release /three.txt **
+
+
+Question 2:
+Discuss the pros and cons of deleting all versions if a file is deleted in the mount directory.
+Pros:
+- Allows you to delete all versions of a file easily (only a single file to delete). This could be useful if trying to delete multiple files, each with multiple versions.
+- No need for file cleanup when moving files. If a file is moved from the mount directory, you will not have to delete the versioned files manually.
+
+Cons:
+- Single point of failure. If you accidentally delete a file, all previous versions will be lost. Even if the file is added back to mount, it will not be able to recover all the previous versions of that file.
+- If you move a file to a different location, it will no longer be in the mount directory, and thus will be treated the same as if it were deleted. This means that moving files around will also cause all previous versions to be deleted. This presents a similar problem to above, wherein if you want to move a file back to the mount directory, it will no longer possess it's past versions.
+
+
+
