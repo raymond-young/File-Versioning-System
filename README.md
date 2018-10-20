@@ -1,5 +1,5 @@
-# 370a3: A file verisoning system 
-Assignment for 370 involving editing a file system to include versioning, alongside other tools to help with versioning.
+# 370a3: File Versioning System
+An assignment for SOFTENG370 involving editing a file system to include versioning, alongside other tools to help with versioning.
 
 ## Running and displaying the data
 In Linux, you must create a directory called `mount` in the directory on which these files are located. Then run the file `versionfs.py` by navigating to the directory in which it is located via. the command line, and running the following command:
