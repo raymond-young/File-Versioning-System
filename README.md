@@ -25,6 +25,7 @@ one > mount/one.txt
 nano mount/one.txt
 ```
 Make some edits, then close nano (the text editor).
+If the file in `mount` is deleted, the versioned files will still remain. This way, you can recover files if they are accidentally deleted.
 
 
 
