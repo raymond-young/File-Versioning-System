@@ -16,6 +16,16 @@ fusermount -u mount
 This will stop the file system.
 
 
+## File Versioning
+All files stored in the `mount` directory will be versioned. The latest 6 versions of the file will be stored in the hidden directory `.versiondir`, named according to the version number (e.g. `yourfile.txt.1` is the latest version of `yourfile.txt`). Upon creating a seventh version of the file, the oldest version will be deleted.
+
+Try creating a file in the `mount` directory, then making some edits to it. Watch what happens in the first terminal (the one running `python .versionfs.py mount`).
+```
+one > mount/one.txt
+nano mount/one.txt
+```
+Make some edits, then close nano (the text editor).
+
 
 
 ## Versioning Tools
